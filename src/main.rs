@@ -1,21 +1,33 @@
-use rppal::gpio::Gpio;
+use doorsensor::gpio::GPIO;
 use rppal::system::DeviceInfo;
 use std::error::Error;
 use std::thread;
 use std::time::Duration;
 
-// Gpio uses BCM pin numbering. BCM GPIO 18 is tied to physical pin 12.
-const GPIO_LED: u8 = 18;
-
 fn main() -> Result<(), Box<dyn Error>> {
-    println!("Blinking an LED on a {}.", DeviceInfo::new()?.model());
+    println!("Door sensor on {}.", DeviceInfo::new()?.model());
 
-    let mut pin = Gpio::new()?.get(GPIO_LED)?.into_output();
+    let mut gpio = GPIO::new().expect("error initializing GPIO");
 
-    // Blink the LED by setting the pin's logic level high for 500 ms.
-    pin.set_high();
-    thread::sleep(Duration::from_millis(500));
-    pin.set_low();
+    // let gpio = conn.execute(
+    //     "create table if not exists cat_colors (
+    //          id integer primary key,
+    //          name text not null unique
+    //      )",
+    //     NO_PARAMS,
+    // )?;
+
+    loop {
+        thread::sleep(Duration::from_secs(1));
+
+        if gpio.is_door_open() {
+            println!("Door is opened!");
+            gpio.turn_on_led();
+        } else {
+            println!("Door is closed!");
+            gpio.turn_off_led();
+        }
+    }
 
     Ok(())
 }

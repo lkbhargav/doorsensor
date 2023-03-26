@@ -1,0 +1,1 @@
+Raspberry pi model 3 B pinouts: https://www.raspberrypi.com/documentation/computers/raspberry-pi.html
