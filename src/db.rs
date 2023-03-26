@@ -9,8 +9,14 @@ pub struct DB {
 }
 
 impl DB {
-    pub fn init() -> Result<DB> {
-        let conn = Connection::open(DB_NAME)?;
+    pub fn init(db_path: &str) -> Result<DB> {
+        let mut path = db_path.to_string();
+
+        if !db_path.ends_with("/") {
+            path = format!("{db_path}/");
+        }
+
+        let conn = Connection::open(format!("{path}{DB_NAME}"))?;
 
         conn.execute(
             format!(
