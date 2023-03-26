@@ -1,6 +1,7 @@
 use anyhow::Result;
 use rusqlite::Connection;
 
+const DB_NAME: &str = "doorsensor.db";
 const TABLE_NAME: &str = "logs";
 
 pub struct DB {
@@ -9,7 +10,7 @@ pub struct DB {
 
 impl DB {
     pub fn init() -> Result<DB> {
-        let conn = Connection::open("doorsensor.db")?;
+        let conn = Connection::open(DB_NAME)?;
 
         conn.execute(
             format!(
@@ -31,8 +32,6 @@ impl DB {
             format!("insert into {TABLE_NAME}(is_door_open) values(?1)").as_str(),
             &[&is_door_open],
         )?;
-
-        println!("Inserted a record: {res}");
 
         Ok(())
     }

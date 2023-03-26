@@ -29,12 +29,6 @@ fn main() -> Result<(), Box<dyn Error>> {
         if door_is_open != state {
             door_is_open = state;
 
-            if state {
-                println!("Door just opened!");
-            } else {
-                println!("Door just closed!");
-            }
-
             db.log(state);
         }
     }
