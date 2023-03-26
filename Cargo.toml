@@ -11,3 +11,4 @@ rppal = "0.14.1"
 rusqlite = "0.29.0"
 tokio = { version = "1", features = ["full"] }
 email = { git = "https://github.com/lkbhargav/emailer.git" }
+openssl = { version = "0.10", features = ["vendored"] }
