@@ -18,11 +18,9 @@ fn main() -> Result<(), Box<dyn Error>> {
         thread::sleep(Duration::from_millis(500));
 
         if gpio.is_door_open() {
-            println!("Door is opened!");
             gpio.turn_on_led();
             state = true;
         } else {
-            println!("Door is closed!");
             gpio.turn_off_led();
             state = false;
         }
@@ -31,7 +29,13 @@ fn main() -> Result<(), Box<dyn Error>> {
         if door_is_open != state {
             door_is_open = state;
 
-            // TODO: write to DB on state change
+            if state {
+                println!("Door just opened!");
+            } else {
+                println!("Door just closed!");
+            }
+
+            db.log(state);
         }
     }
 

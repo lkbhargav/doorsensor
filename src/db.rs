@@ -20,4 +20,14 @@ impl DB {
 
         Ok(DB { conn })
     }
+
+    pub fn log(&mut self, is_door_open: bool) -> Result<()> {
+        let res = &self
+            .conn
+            .execute("insert into log(is_door_open) values(?1)", &[&is_door_open])?;
+
+        println!("Inserted a record: {res}");
+
+        Ok(())
+    }
 }
