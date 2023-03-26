@@ -12,8 +12,6 @@ fn main() -> Result<(), Box<dyn Error>> {
 
     let mut pin = Gpio::new()?.get(GPIO_LED)?.into_output();
 
-    let mut pin = Gpio::new()?.get(GPIO_LED)?.into_input();
-
     // Blink the LED by setting the pin's logic level high for 500 ms.
     pin.set_high();
     thread::sleep(Duration::from_millis(500));
