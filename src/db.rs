@@ -21,10 +21,11 @@ impl DB {
         conn.execute(
             format!(
                 "create table if not exists {TABLE_NAME} (
-			id integer primary key,
-			is_door_open BOOLEAN not null,
-			timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
-		)"
+					id INTEGER primary key,
+					is_door_open BOOLEAN not null,
+					timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+					notes TEXT
+				)"
             )
             .as_str(),
             (),
