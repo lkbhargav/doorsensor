@@ -57,7 +57,7 @@ fn main() {
             }
 
             if vars.email_alert {
-                let mut message;
+                let message;
                 if state {
                     message = "Room door OPENED";
                 } else {
