@@ -33,7 +33,7 @@ impl EnvironmentVariables {
             "DS_PING_INTERVAL",
             "DS_PING_INTERVAL is required but not found"
         );
-        let ping_interval = cron_interval.parse::<u32>()?;
+        let ping_interval = ping_interval.parse::<u32>()?;
         let email_alert = parse_env!("DS_EMAIL_ALERT", "DS_EMAIL_ALERT is required but not found");
         let email_alert = email_alert.parse::<bool>()?;
         let db_path = parse_env!("DS_DB_PATH", "DS_DB_PATH is required but not found");
