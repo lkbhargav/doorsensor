@@ -1,3 +1,4 @@
+use anyhow::Ok;
 use doorsensor::db::DB;
 use doorsensor::environment::EnvironmentVariables;
 use doorsensor::gpio::GPIO;
@@ -65,4 +66,6 @@ fn main() -> Result<(), Box<dyn Error>> {
             }
         }
     }
+
+    Ok(())
 }
