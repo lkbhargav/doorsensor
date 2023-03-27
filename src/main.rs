@@ -11,8 +11,13 @@ use std::time::Duration;
 const EMAIL_FROM: &str = "DoorSensor <bhargav.lakkur@gmail.com>";
 const TO_ADDRESS: &str = "Bhargav Lakkur <lkbhargav9@gmail.com>";
 
-fn main() -> Result<(), Box<dyn Error>> {
-    println!("Door sensor on {}.", DeviceInfo::new()?.model());
+fn main() {
+    println!(
+        "Door sensor on {}.",
+        DeviceInfo::new()
+            .expect("error trying to deviceInfo")
+            .model()
+    );
 
     let mut door_is_open = true;
     let mut state = true;
@@ -66,6 +71,4 @@ fn main() -> Result<(), Box<dyn Error>> {
             }
         }
     }
-
-    Ok(())
 }
