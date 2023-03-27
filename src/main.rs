@@ -1,4 +1,3 @@
-use anyhow::Ok;
 use chrono::offset::Utc;
 use chrono::DateTime;
 use doorsensor::db::DB;
@@ -58,7 +57,7 @@ fn main() {
             }
 
             if vars.email_alert {
-                let mut message = "";
+                let mut message;
                 if state {
                     message = "Room door OPENED";
                 } else {
