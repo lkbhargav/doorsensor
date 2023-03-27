@@ -65,11 +65,15 @@ fn main() {
                 let datetime: DateTime<Utc> = system_time.into();
                 let datetime = format!("{}", datetime.format("%m/%d/%Y %T"));
 
-                gmail.send(
+                let res = gmail.send(
                     TO_ADDRESS,
                     "Room door alert",
                     format!("{message} @ {datetime} (mm/dd/yyyy)!").as_str(),
                 );
+
+                if res.is_err() {
+                    println!("error sending email: {}", res.err().unwrap());
+                }
             }
         }
     }
