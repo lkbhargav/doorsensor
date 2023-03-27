@@ -1,4 +1,6 @@
 use anyhow::Ok;
+use chrono::offset::Utc;
+use chrono::DateTime;
 use doorsensor::db::DB;
 use doorsensor::environment::EnvironmentVariables;
 use doorsensor::gpio::GPIO;
@@ -67,7 +69,7 @@ fn main() {
                     TO_ADDRESS,
                     "Room door alert",
                     format!("{message} @ {datetime} (mm/dd/yyyy)!").as_str(),
-                )
+                );
             }
         }
     }
