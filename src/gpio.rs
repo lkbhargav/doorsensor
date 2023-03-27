@@ -25,10 +25,10 @@ impl GPIO {
     }
 
     pub fn turn_on_led(&mut self) {
-        &self.led.set_high();
+        let _ = &self.led.set_high();
     }
 
     pub fn turn_off_led(&mut self) {
-        &self.led.set_low();
+        let _ = &self.led.set_low();
     }
 }

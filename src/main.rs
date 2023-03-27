@@ -21,7 +21,7 @@ fn main() {
     );
 
     let mut door_is_open = true;
-    let mut state = true;
+    let state;
 
     let vars = EnvironmentVariables::init().expect("error initializing environment variables");
     let mut db = DB::init(&vars.db_path).expect("error initializing DB instance");

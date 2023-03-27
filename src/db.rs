@@ -34,7 +34,7 @@ impl DB {
     }
 
     pub fn log(&mut self, is_door_open: bool) -> Result<()> {
-        let res = &self.conn.execute(
+        let _res = &self.conn.execute(
             format!("insert into {TABLE_NAME}(is_door_open) values(?1)").as_str(),
             &[&is_door_open],
         )?;
