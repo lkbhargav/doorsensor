@@ -35,7 +35,7 @@ fn main() {
     .expect("error initializing email service");
 
     loop {
-        thread::sleep(Duration::from_millis(vars.ping_interval));
+        thread::sleep(Duration::from_millis(vars.ping_interval.into()));
 
         if gpio.is_door_open() {
             gpio.turn_on_led();
