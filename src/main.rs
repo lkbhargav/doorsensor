@@ -51,7 +51,11 @@ fn main() {
         if door_is_open != state {
             door_is_open = state;
 
-            db.log(state);
+            let res = db.log(state);
+
+            if res.is_err() {
+                println!("error trying to log a record in DB");
+            }
 
             if vars.email_alert {
                 let mut message = "";
