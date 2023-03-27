@@ -6,9 +6,9 @@ use doorsensor::environment::EnvironmentVariables;
 use doorsensor::gpio::GPIO;
 use email::{Email, Relay};
 use rppal::system::DeviceInfo;
-use std::error::Error;
 use std::thread;
 use std::time::Duration;
+use std::time::SystemTime;
 
 const EMAIL_FROM: &str = "DoorSensor <bhargav.lakkur@gmail.com>";
 const TO_ADDRESS: &str = "Bhargav Lakkur <lkbhargav9@gmail.com>";

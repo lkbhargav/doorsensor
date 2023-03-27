@@ -12,3 +12,4 @@ rusqlite = "0.29.0"
 tokio = { version = "1", features = ["full"] }
 email = { git = "https://github.com/lkbhargav/emailer.git" }
 openssl = { version = "0.10", features = ["vendored"] }
+chrono = "0.4.24"
