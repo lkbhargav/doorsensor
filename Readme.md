@@ -19,4 +19,4 @@ Deployment steps:
 4. Update the environment variables if necessary from the Supervisor config
 5. Run `reread` and `update` commands on the supervisorctl
 
-Note: `Cross` doesn't work since the build requires some dependecies on openssl which doesn't play well. For now the config is still here.
+**Note**: `Cross` doesn't work since the build requires some dependecies on openssl which doesn't play well. For now the config is still here. Also, Raspberry pi should have both `sqlite3` and `libsqlite3-dev` packages installed or there will be compilation errors
