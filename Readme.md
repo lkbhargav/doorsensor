@@ -14,7 +14,7 @@ Sample query:
 
 Deployment steps:
 1. Push the changes to the Repo (git push origin master)
-2. Pull it on the server (git pull origin master) (legacypi - 252)
+2. Pull it on the server (git pull origin master) (doorsensor - 188)
 3. Build the project and move the binary to `/usr/local/bin/`
 4. Update the environment variables if necessary from the Supervisor config
 5. Run `reread` and `update` commands on the supervisorctl
