@@ -35,14 +35,20 @@ fn main() {
     )
     .expect("error initializing email service");
 
+    gpio.turn_off_led();
+
     loop {
         thread::sleep(Duration::from_millis(vars.ping_interval.into()));
 
         if gpio.is_door_open() {
-            gpio.turn_on_led();
+            if vars.enable_feedback {
+                gpio.turn_on_led();
+            }
             state = true;
         } else {
-            gpio.turn_off_led();
+            if vars.enable_feedback {
+                gpio.turn_off_led();
+            }
             state = false;
         }
 

@@ -14,6 +14,7 @@ pub struct EnvironmentVariables {
     pub ping_interval: u32,
     pub email_alert: bool,
     pub db_path: String,
+    pub enable_feedback: bool,
 }
 
 macro_rules! parse_env {
@@ -37,12 +38,18 @@ impl EnvironmentVariables {
         let email_alert = parse_env!("DS_EMAIL_ALERT", "DS_EMAIL_ALERT is required but not found");
         let email_alert = email_alert.parse::<bool>()?;
         let db_path = parse_env!("DS_DB_PATH", "DS_DB_PATH is required but not found");
+        let enable_feedback = parse_env!(
+            "DS_ENABLE_FEEDBACK",
+            "DS_ENABLE_FEEDBACK is required but not found"
+        );
+        let enable_feedback = enable_feedback.parse::<bool>()?;
 
         Ok(EnvironmentVariables {
             gmail: Gmail { username, password },
             ping_interval,
             email_alert,
             db_path,
+            enable_feedback,
         })
     }
 }
