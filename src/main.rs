@@ -33,8 +33,8 @@ fn main() {
     let mut db = DB::init(&vars.db_path).expect("error initializing DB instance");
     let mut gpio = GPIO::new().expect("error initializing GPIO");
     let gmail = Email::new(
-        EMAIL_FROM.to_string(),
-        EMAIL_FROM.to_string(),
+        EMAIL_FROM,
+        EMAIL_FROM,
         &vars.gmail.username,
         &vars.gmail.password,
         Relay::Gmail,
