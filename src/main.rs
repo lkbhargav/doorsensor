@@ -104,7 +104,7 @@ fn notify_if_slack_notification_is_enabled(
         return;
     }
 
-    let slack_token = vars.slack_token;
+    let slack_token = &vars.slack_token;
 
     let slack_url = format!("{SLACK_URL}{slack_token}");
 
