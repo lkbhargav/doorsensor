@@ -6,7 +6,8 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-email = { git = "https://github.com/lkbhargav/emailer.git", rev = "77745133fe61425d005ed17940b7f23a1ad2aa34"}anyhow = "1.0.70"
+email = { git = "https://github.com/lkbhargav/emailer.git", rev = "77745133fe61425d005ed17940b7f23a1ad2aa34" }
+anyhow = "1.0.70"
 rppal = "0.14.1"
 rusqlite = "0.29.0"
 tokio = { version = "1", features = ["full"] }
