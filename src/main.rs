@@ -64,11 +64,11 @@ fn main() {
             message = "Room door CLOSED";
         }
 
-        notify_if_slack_notification_is_enabled(&vars, message, &client);
-
         // on state change
         if door_is_open != state {
             door_is_open = state;
+
+            notify_if_slack_notification_is_enabled(&vars, message, &client);
 
             let res = db.log(state);
 
