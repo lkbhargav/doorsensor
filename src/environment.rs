@@ -15,6 +15,7 @@ pub struct EnvironmentVariables {
     pub email_alert: bool,
     pub db_path: String,
     pub enable_feedback: bool,
+    pub slack_token: String,
 }
 
 macro_rules! parse_env {
@@ -44,12 +45,15 @@ impl EnvironmentVariables {
         );
         let enable_feedback = enable_feedback.parse::<bool>()?;
 
+        let slack_token = parse_env!("DS_SLACK_TOKEN", "DS_SLACK_TOKEN is required but not found");
+
         Ok(EnvironmentVariables {
             gmail: Gmail { username, password },
             ping_interval,
             email_alert,
             db_path,
             enable_feedback,
+            slack_token,
         })
     }
 }
