@@ -33,8 +33,8 @@ fn main() {
     let mut db = DB::init(&vars.db_path).expect("error initializing DB instance");
     let mut gpio = GPIO::new().expect("error initializing GPIO");
     let gmail = Email::new(
-        EMAIL_FROM,
-        EMAIL_FROM,
+        EMAIL_FROM.to_owned(),
+        EMAIL_FROM.to_owned(),
         &vars.gmail.username,
         &vars.gmail.password,
         Relay::Gmail,
@@ -113,11 +113,18 @@ fn notify_if_slack_notification_is_enabled(
     });
 
     // Make the POST request
-    let response = client
+    let response = match client
         .post(slack_url)
         .header(CONTENT_TYPE, "application/json")
         .json(&payload)
-        .send()?;
+        .send()
+    {
+        Ok(d) => d,
+        Err(e) => {
+            println!("error sending slack notification");
+            return;
+        }
+    };
 
     // Check if the response is successful
     if !response.status().is_success() {
