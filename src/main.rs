@@ -33,8 +33,8 @@ fn main() {
     let mut db = DB::init(&vars.db_path).expect("error initializing DB instance");
     let mut gpio = GPIO::new().expect("error initializing GPIO");
     let gmail = Email::new(
-        EMAIL_FROM.to_owned(),
-        EMAIL_FROM.to_owned(),
+        EMAIL_FROM.to_string(),
+        EMAIL_FROM.to_string(),
         &vars.gmail.username,
         &vars.gmail.password,
         Relay::Gmail,
@@ -64,7 +64,7 @@ fn main() {
             message = "Room door CLOSED";
         }
 
-        notify_if_slack_notification_is_enabled(&vars, message);
+        notify_if_slack_notification_is_enabled(&vars, message, &client);
 
         // on state change
         if door_is_open != state {
@@ -95,7 +95,11 @@ fn main() {
     }
 }
 
-fn notify_if_slack_notification_is_enabled(vars: &EnvironmentVariables, message: &str) {
+fn notify_if_slack_notification_is_enabled(
+    vars: &EnvironmentVariables,
+    message: &str,
+    client: &Client,
+) {
     if vars.slack_token.is_empty() {
         return;
     }
