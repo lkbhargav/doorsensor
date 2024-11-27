@@ -7,7 +7,7 @@ edition = "2021"
 
 [dependencies]
 email = { git = "https://github.com/lkbhargav/emailer.git", rev = "77745133fe61425d005ed17940b7f23a1ad2aa34" }
-anyhow = "1.0.70"
+anyhow = "1.0.75"
 rppal = "0.14.1"
 rusqlite = "0.29.0"
 tokio = { version = "1", features = ["full"] }
